@@ -1,0 +1,117 @@
+<!--
+README:
+This is the Browser Environment Dashboard which provides a control panel to monitor and interact with the browser environment. 
+It uses JavaScript browser objects like navigator, screen, document, location, window, and history to:
+- Display browser and screen information
+- Update and view page metadata
+- Navigate through history
+- Change background color dynamically based on screen width
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Browser Environment Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      transition: background-color 0.3s;
+    }
+    header {
+      border-bottom: 2px solid #ccc;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      margin-bottom: 0;
+    }
+    section {
+      margin-bottom: 30px;
+    }
+    button {
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Student Profile</h1>
+    <p><strong>Complete Name:</strong> Brian Jose D. Lim</p>
+    <p><strong>Sex:</strong> Male</p>
+    <p><strong>Address:</strong> Zone 4, San Francisco Tigaon, Camarines sur</p>
+    <p><strong>Course, Year, and Section:</strong> BSIT 2A</p>
+    <p><strong>Name of School:</strong>  Partido State University</p>
+    <p><strong>Semester and Academic Year:</strong> 2nd Semester, AY 2024-2025</p>
+    <p><strong>Subject Code and Title:</strong> PF2 Event Driven Programming</p>
+    <p><strong>Name of Subject Instructor:</strong> Prof. Rj Abio</p>
+  </header>
+
+  <section id="browser-info">
+    <h2>Browser Information</h2>
+    <p id="browserName"></p>
+    <p id="platform"></p>
+    <p id="javaEnabled"></p>
+    <p id="screenRes"></p>
+    <p id="availScreen"></p>
+    <p id="colorDepth"></p>
+  </section>
+
+  <section id="page-info">
+    <h2>Page Information and Controls</h2>
+    <p><strong>Current URL:</strong> <span id="url"></span></p>
+    <p><strong>Hostname:</strong> <span id="hostname"></span></p>
+    <p><strong>Page Title:</strong> <span id="titleText"></span></p>
+    <button onclick="changeTitle()">Change Page Title</button>
+  </section>
+
+  <section id="navigation-controls">
+    <h2>Navigation Controls</h2>
+    <button onclick="location.reload()">Reload Page</button>
+    <button onclick="location.href='https://www.example.com'">Redirect to example.com</button>
+    <button onclick="history.back()">Back</button>
+    <button onclick="history.forward()">Forward</button>
+  </section>
+
+  <script>
+    // Display browser information
+    document.getElementById('browserName').textContent = `Browser: ${navigator.appName}, Version: ${navigator.appVersion}`;
+    document.getElementById('platform').textContent = `Platform: ${navigator.platform}`;
+    document.getElementById('javaEnabled').textContent = `Java Enabled: ${navigator.javaEnabled()}`;
+    document.getElementById('screenRes').textContent = `Screen Resolution: ${screen.width} x ${screen.height}`;
+    document.getElementById('availScreen').textContent = `Available Screen Size: ${screen.availWidth} x ${screen.availHeight}`;
+    document.getElementById('colorDepth').textContent = `Color Depth: ${screen.colorDepth} bits`;
+
+    // Display page info
+    document.getElementById('url').textContent = window.location.href;
+    document.getElementById('hostname').textContent = window.location.hostname;
+    document.getElementById('titleText').textContent = document.title;
+
+    // Change title function
+    function changeTitle() {
+      const newTitle = prompt("Enter new page title:");
+      if (newTitle) {
+        document.title = newTitle;
+        document.getElementById('titleText').textContent = newTitle;
+      }
+    }
+
+    // Change background color based on screen width
+    function updateBackgroundColor() {
+      const width = window.innerWidth;
+      if (width < 600) {
+        document.body.style.backgroundColor = "blue";
+      } else if (width < 992) {
+        document.body.style.backgroundColor = "green";
+      } else {
+        document.body.style.backgroundColor = "orange";
+      }
+    }
+
+    // Initial call and event listener
+    window.addEventListener('resize', updateBackgroundColor);
+    window.addEventListener('load', updateBackgroundColor);
+  </script>
+</body>
+</html>

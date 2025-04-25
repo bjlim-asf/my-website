@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Word Guessing Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    #message, #hint {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    #guessInput {
+      padding: 10px;
+      font-size: 16px;
+    }
+    #submitGuess, #restartGame {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Word Guessing Game</h1>
+  <p>Guess the secret word! You have 5 attempts.</p>
+
+  <input type="text" id="guessInput" placeholder="Enter your guess" />
+  <br>
+  <button id="submitGuess">Submit</button>
+  <button id="restartGame" style="display: none;">Restart</button>
+
+  <div id="message"></div>
+  <div id="hint"></div> <!-- Hint section added -->
+
+  <script src="script.js"></script>
+</body>
+</html>
